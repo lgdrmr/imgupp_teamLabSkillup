@@ -21,6 +21,9 @@ Route::get('/login/github/callback', 'Auth\LoginController@handleProviderCallbac
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@top');
+Route::get('/next', 'HomeController@next');
+Route::get('/previous', 'HomeController@previous');
 
 Route::get('/post', 'PostController@top');
 Route::post('/upload', 'PostController@upload');
+// Route::post('/delete', 'PostController@delete');

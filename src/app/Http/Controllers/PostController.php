@@ -11,16 +11,14 @@ class PostController extends Controller
 {
   public function top(Request $request)
   {
-    list($is_loggedin, $uid) = LoginController::is_user_loggedin($request);
-    $request->session()->put('uid', $uid);
+    $status = LoginController::is_user_loggedin($request);
+    $request->session()->put('uid', $status['uid']);
 
-    if (!( $is_loggedin )) {
+    if (!( $status['is_loggedin'] )) {
       return redirect('/home');
     }
 
-    return view('/post', [
-      'is_loggedin' => $is_loggedin,
-    ]);
+    return view('/post', $status->all());
   }
 
   /**

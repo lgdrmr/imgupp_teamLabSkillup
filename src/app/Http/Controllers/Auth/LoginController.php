@@ -45,8 +45,8 @@ class LoginController extends Controller
      */
     public function top(Request $request)
     {
-        list($is_loggedin,) = $this::is_user_loggedin($request);
-        if ($is_loggedin) {
+        $status = $this::is_user_loggedin($request);
+        if ($status['is_loggedin']) {
             return redirect('/home');
         } else {
             return view('/login');
@@ -97,7 +97,7 @@ class LoginController extends Controller
             $is_loggedin = false;
             $uid = null;
         }
-        return array($is_loggedin, $uid);
+        return collect(['is_loggedin' => $is_loggedin, 'uid' => $uid]);
     }
 
     /**
