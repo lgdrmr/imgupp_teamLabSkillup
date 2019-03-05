@@ -45,7 +45,7 @@ class LoginController extends Controller
      */
     public function top(Request $request)
     {
-        list($is_loggedin, ) = $this::is_user_loggedin($request);
+        list($is_loggedin,) = $this::is_user_loggedin($request);
         if ($is_loggedin) {
             return redirect('/home');
         } else {

@@ -35,13 +35,12 @@ class PostController extends Controller
 
     if ($request->hasFile('image')) {
       $path = $request->file('image')->store('public');
-      $uid = $request->session()->get('uid');
+      $uid = $request->session()->pull('uid');
       Posts::create([
         'imagefile' => basename($path),
         'user_id' => $uid,
         'caption' => $request->get('caption'),
       ]);
-      $request->session()->forget('uid');
       return redirect('/home');
     } else {
       return redirect()
