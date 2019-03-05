@@ -87,7 +87,11 @@ class LoginController extends Controller
         if ($request->session()->has('github_token')) {
             $is_loggedin = true;
             $token = $request->session()->get('github_token', null);
-            $user = Socialite::driver('github')->userFromToken($token);
+            try {
+                $user = Socialite::driver('github')->userFromToken($token);
+            } catch (\Exception $e) {
+                return redirect('/login');
+            }
             $uid = Users::where('github_id', $user->getNickname())->value('id');
         } else {
             $is_loggedin = false;
