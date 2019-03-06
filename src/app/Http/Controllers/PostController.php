@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\LoginController;
-use App\Model\Posts;
+use App\Model\Post;
 
 class PostController extends Controller
 {
@@ -34,7 +34,7 @@ class PostController extends Controller
     if ($request->hasFile('image')) {
       $path = $request->file('image')->store('public');
       $uid = $request->session()->pull('uid');
-      Posts::create([
+      Post::create([
         'imagefile' => basename($path),
         'user_id' => $uid,
         'caption' => $request->get('caption'),
@@ -54,7 +54,7 @@ class PostController extends Controller
   public function delete(Request $request)
   {
     $iid = $request->get('image_id');
-    Posts::destroy($iid);
+    Post::destroy($iid);
     return redirect('/home');
   }
 }

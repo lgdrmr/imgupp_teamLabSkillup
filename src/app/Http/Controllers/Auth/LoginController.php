@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\Request;
-use App\Model\Users;
+use App\Model\User;
 
 class LoginController extends Controller
 {
@@ -67,8 +67,8 @@ class LoginController extends Controller
     public function handleProviderCallback(Request $request)
     {
         $user = Socialite::driver('github')->user();
-        if (!( Users::where('github_id', $user->user['login'])->exists() )) {
-            Users::create([
+        if (!( User::where('github_id', $user->user['login'])->exists() )) {
+            User::create([
                 'github_id' => $user->user['login'],
                 'avaterfile' => $user->user['avatar_url'],
             ]);
@@ -92,7 +92,7 @@ class LoginController extends Controller
             } catch (\Exception $e) {
                 $this::logout($request);
             }
-            $uid = Users::where('github_id', $user->getNickname())->value('id');
+            $uid = User::where('github_id', $user->getNickname())->value('id');
         } else {
             $is_loggedin = false;
             $uid = null;
