@@ -27,3 +27,5 @@ Route::get('/previous', 'HomeController@previous');
 Route::get('/post', 'PostController@top');
 Route::post('/upload', 'PostController@upload');
 Route::post('/delete', 'PostController@delete');
+
+Route::get('/{github_id}', 'UserController@top');

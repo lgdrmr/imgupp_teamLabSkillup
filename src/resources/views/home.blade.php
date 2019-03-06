@@ -22,7 +22,7 @@
 @isset ($posts)
 @foreach ($posts as $pst)
   <div>
-    {{ $users[$pst->user_id - 1]->github_id }}
+    <a href="/{{ $users[$pst->user_id - 1]->github_id }}">{{ $users[$pst->user_id - 1]->github_id }}</a>
     <img src="{{ asset('storage/'.$pst->imagefile) }}">
     {{ $pst->caption }}
 @if ($pst->user_id == $uid)
