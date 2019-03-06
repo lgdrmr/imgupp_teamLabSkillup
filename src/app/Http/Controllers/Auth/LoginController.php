@@ -45,7 +45,7 @@ class LoginController extends Controller
      */
     public function top(Request $request)
     {
-        $status = $this::is_user_loggedin($request);
+        $status = self::is_user_loggedin($request);
         if ($status['is_loggedin']) {
             return redirect('/home');
         } else {
@@ -90,7 +90,7 @@ class LoginController extends Controller
             try {
                 $user = Socialite::driver('github')->userFromToken($token);
             } catch (\Exception $e) {
-                $this::logout($request);
+                self::logout($request);
             }
             $uid = User::where('github_id', $user->getNickname())->value('id');
         } else {
