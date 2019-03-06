@@ -25,7 +25,12 @@
     <a href="/{{ $users[$pst['user_id'] - 1]->github_id }}">{{ $users[$pst['user_id'] - 1]->github_id }}</a>
     <img src="{{ asset('storage/'.$pst['imagefile']) }}">
     {{ $pst['caption'] }}
-    {{ $pst['likes'] }}
+    <form action="{{ url('/whois') }}" method="POST" name="whois">
+      <input type="hidden" name="image_id" value="{{ $pst['id'] }}">
+      {{ csrf_field() }}
+      <button class="btn btn-success">{{ $pst['likes'] }}</button>
+      <!-- <a href="/delete" onclick="document.delete.submit();return false;">Delete</a> -->
+    </form>
 @if ($pst['user_id'] == $uid)
     <form action="{{ url('/delete') }}" method="POST" name="delete">
       <input type="hidden" name="image_id" value="{{ $pst['id'] }}">
@@ -66,8 +71,5 @@
 @empty ($isTail)
   <a href="/next">next</a>
 @endempty
-<?php
-dd($posts, $uid);
-?>
 </body>
 </html>

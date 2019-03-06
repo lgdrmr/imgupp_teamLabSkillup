@@ -31,5 +31,6 @@ Route::post('/upload', 'PostController@upload');
 Route::post('/delete', 'PostController@delete');
 Route::post('/like', 'PostController@like');
 Route::post('/unlike', 'PostController@unlike');
+Route::post('/whois', 'PostController@whoisliked');
 
 Route::get('/{github_id}', 'UserController@top');

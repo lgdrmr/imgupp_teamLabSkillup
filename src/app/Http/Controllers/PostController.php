@@ -76,4 +76,13 @@ class PostController extends Controller
     Post::where('id', $iid)->get()->first()->likeUsers()->detach($status['uid']);
     return redirect('/home');
   }
+
+  public function whoisliked(Request $request)
+  {
+    $status = LoginController::is_user_loggedin($request);
+    $iid = $request->get('image_id');
+    $likedUsers = Post::where('id', $iid)->get()->first()->likeUsers()->get()->toArray();
+    $status->put('likedUsers', $likedUsers);
+    return view('/whois', $status->all());
+  }
 }
