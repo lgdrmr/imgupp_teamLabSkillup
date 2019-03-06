@@ -1,4 +1,3 @@
-<script type="text/javascript">
 function imgPreview(event){
   var file = event.target.files[0];
   var reader = new FileReader();
@@ -17,4 +16,3 @@ function imgPreview(event){
 
   reader.readAsDataURL(file);
 }
-</script>

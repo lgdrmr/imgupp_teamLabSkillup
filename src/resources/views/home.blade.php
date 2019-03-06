@@ -25,36 +25,32 @@
     <a href="/{{ $users[$pst['user_id'] - 1]->github_id }}">{{ $users[$pst['user_id'] - 1]->github_id }}</a>
     <img src="{{ asset('storage/'.$pst['imagefile']) }}">
     {{ $pst['caption'] }}
-    <form action="{{ url('/whois') }}" method="POST" name="whois">
+    <form name="whois{{ $pst['id'] }}" method="POST" action="{{ url('/whois') }}">
       <input type="hidden" name="image_id" value="{{ $pst['id'] }}">
       {{ csrf_field() }}
-      <button class="btn btn-success">{{ $pst['likes'] }}</button>
-      <!-- <a href="/delete" onclick="document.delete.submit();return false;">Delete</a> -->
+      <a href="javascript:whois{{ $pst['id'] }}.submit()">{{ $pst['likes'] }}</a>
     </form>
 @if ($pst['user_id'] == $uid)
-    <form action="{{ url('/delete') }}" method="POST" name="delete">
+    <form name="delete{{ $pst['id'] }}" method="POST" action="{{ url('/delete') }}">
       <input type="hidden" name="image_id" value="{{ $pst['id'] }}">
       {{ csrf_field() }}
-      <button class="btn btn-success">Delete</button>
-      <!-- <a href="/delete" onclick="document.delete.submit();return false;">Delete</a> -->
+      <a href="javascript:delete{{ $pst['id'] }}.submit()">Delete</a>
     </form>
 @endif
 @if ($is_loggedin)
 @if ($pst['isLiked'])
     <!-- likeしている -->
-    <form action="{{ url('/unlike') }}" method="POST" name="unlike">
+    <form name="unlike{{ $pst['id'] }}" method="POST" action="{{ url('/unlike') }}">
       <input type="hidden" name="image_id" value="{{ $pst['id'] }}">
       {{ csrf_field() }}
-      <button class="btn btn-success">Unlike</button>
-      <!-- <a href="/unlike" onclick="document.delete.submit();return false;">Unlike</a> -->
+      <a href="javascript:unlike{{ $pst['id'] }}.submit()">Unlike</a>
     </form>
 @else
     <!-- likeしていない -->
-    <form action="{{ url('/like') }}" method="POST" name="like">
+    <form name="like{{ $pst['id'] }}" method="POST" action="{{ url('/like') }}">
       <input type="hidden" name="image_id" value="{{ $pst['id'] }}">
       {{ csrf_field() }}
-      <button class="btn btn-success">Like</button>
-      <!-- <a href="/like" onclick="document.delete.submit();return false;">Like</a> -->
+      <a href="javascript:like{{ $pst['id'] }}.submit()">Like</a>
     </form>
 @endif
 @else
