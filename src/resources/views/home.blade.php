@@ -24,7 +24,7 @@
   <div>
     <a href="/{{ $users[$pst['user_id'] - 1]->github_id }}">{{ $users[$pst['user_id'] - 1]->github_id }}</a>
     <img src="{{ asset('storage/'.$pst['imagefile']) }}">
-    {{ $pst['caption'] }}
+    {{ htmlspecialchars($pst['caption']) }}
     <form action="{{ url('/whois') }}" method="POST" name="whois">
       <input type="hidden" name="image_id" value="{{ $pst['id'] }}">
       {{ csrf_field() }}
