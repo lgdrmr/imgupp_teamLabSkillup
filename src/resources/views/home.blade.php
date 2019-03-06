@@ -10,36 +10,38 @@
 <body>
   <div class=header>
     <a href="/home">home</a>
-    @if ($is_loggedin)
+@if ($is_loggedin)
     <a href="/logout">logout</a>
-    @else
+@else
     <a href="/login">login</a>
-    @endif
+@endif
     <a href="/post">post</a>
   </div>
 
   <!-- アップロードした画像 -->
-  @isset ($posts)
-  @foreach ($posts as $pst)
+@isset ($posts)
+@foreach ($posts as $pst)
   <div>
     {{ $users[$pst->user_id - 1]->github_id }}
     <img src="{{ asset('storage/'.$pst->imagefile) }}">
     {{ $pst->caption }}
-    @if ($pst->user_id == $uid)
+@if ($pst->user_id == $uid)
     <form action="{{ url('/delete') }}" method="POST" name="delete">
       <input type="hidden" name="image_id" value="{{ $pst->id }}">
-      <a href="javascript:delete.submit()">Delete</a>
+      {{ csrf_field() }}
+      <button class="btn btn-success">Delete</button>
+      <!-- <a href="" onclick="javascript.delete.submit();return false;">Delete</a> -->
     </form>
-    @endif
+@endif
   </div>
-  @endforeach
-  @endisset
+@endforeach
+@endisset
 
-  @empty ($isHead)
+@empty ($isHead)
   <a href="/previous">previous</a>
-  @endempty
-  @empty ($isTail)
+@endempty
+@empty ($isTail)
   <a href="/next">next</a>
-  @endempty
+@endempty
 </body>
 </html>

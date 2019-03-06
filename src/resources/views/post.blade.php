@@ -5,27 +5,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Post</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  @include('scripts.imgpreview')
+@include('scripts.imgpreview')
 </head>
 <body>
   <div class=header>
     <a href="/home">home</a>
-    @if ($is_loggedin)
+@if ($is_loggedin)
       <a href="/logout">logout</a>
-    @else
+@else
       <a href="/login">login</a>
-    @endif
+@endif
     <a href="/post">post</a>
   </div>
 
   <!-- エラーメッセージ -->
-  @if ($errors->any())
+@if ($errors->any())
   <ul>
-    @foreach($errors->all() as $error)
+@foreach($errors->all() as $error)
     <li>{{ $error }}</li>
-    @endforeach
+@endforeach
   </ul>
-  @endif
+@endif
 
   <!-- フォーム -->
   <form action="{{ url('/upload') }}" method="POST" enctype="multipart/form-data">

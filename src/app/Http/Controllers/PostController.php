@@ -15,14 +15,14 @@ class PostController extends Controller
     $request->session()->put('uid', $status['uid']);
 
     if (!( $status['is_loggedin'] )) {
-      return redirect('/home');
+      return redirect('/login');
     }
 
     return view('/post', $status->all());
   }
 
   /**
-   * Process the file upload.
+   * Upload the file
    */
   public function upload(Request $request)
   {
@@ -46,5 +46,15 @@ class PostController extends Controller
         ->withInput()
         ->withErrors('errors');
     }
+  }
+
+  /**
+   * Delete the file
+   */
+  public function delete(Request $request)
+  {
+    $iid = $request->get('image_id');
+    Posts::destroy($iid);
+    return redirect('/home');
   }
 }
