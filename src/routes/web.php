@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PostController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,5 +29,7 @@ Route::get('/previous', 'HomeController@previous');
 Route::get('/post', 'PostController@top');
 Route::post('/upload', 'PostController@upload');
 Route::post('/delete', 'PostController@delete');
+Route::post('/like', 'PostController@like');
+Route::post('/unlike', 'PostController@unlike');
 
 Route::get('/{github_id}', 'UserController@top');

@@ -22,16 +22,39 @@
 @isset ($posts)
 @foreach ($posts as $pst)
   <div>
-    <a href="/{{ $users[$pst->user_id - 1]->github_id }}">{{ $users[$pst->user_id - 1]->github_id }}</a>
-    <img src="{{ asset('storage/'.$pst->imagefile) }}">
-    {{ $pst->caption }}
-@if ($pst->user_id == $uid)
+    <a href="/{{ $users[$pst['user_id'] - 1]->github_id }}">{{ $users[$pst['user_id'] - 1]->github_id }}</a>
+    <img src="{{ asset('storage/'.$pst['imagefile']) }}">
+    {{ $pst['caption'] }}
+    {{ $pst['likes'] }}
+@if ($pst['user_id'] == $uid)
     <form action="{{ url('/delete') }}" method="POST" name="delete">
-      <input type="hidden" name="image_id" value="{{ $pst->id }}">
+      <input type="hidden" name="image_id" value="{{ $pst['id'] }}">
       {{ csrf_field() }}
       <button class="btn btn-success">Delete</button>
-      <!-- <a href="" onclick="javascript.delete.submit();return false;">Delete</a> -->
+      <!-- <a href="/delete" onclick="document.delete.submit();return false;">Delete</a> -->
     </form>
+@endif
+@if ($is_loggedin)
+@if ($pst['isLiked'])
+    <!-- likeしている -->
+    <form action="{{ url('/unlike') }}" method="POST" name="unlike">
+      <input type="hidden" name="image_id" value="{{ $pst['id'] }}">
+      {{ csrf_field() }}
+      <button class="btn btn-success">Unlike</button>
+      <!-- <a href="/unlike" onclick="document.delete.submit();return false;">Unlike</a> -->
+    </form>
+@else
+    <!-- likeしていない -->
+    <form action="{{ url('/like') }}" method="POST" name="like">
+      <input type="hidden" name="image_id" value="{{ $pst['id'] }}">
+      {{ csrf_field() }}
+      <button class="btn btn-success">Like</button>
+      <!-- <a href="/like" onclick="document.delete.submit();return false;">Like</a> -->
+    </form>
+@endif
+@else
+    <!-- logout -->
+    Like
 @endif
   </div>
 @endforeach
@@ -43,5 +66,8 @@
 @empty ($isTail)
   <a href="/next">next</a>
 @endempty
+<?php
+dd($posts, $uid);
+?>
 </body>
 </html>

@@ -27,10 +27,14 @@ class HomeController extends Controller
 
     // Get posts data per page
     $posts = Post::latest('created_at')->get()->slice(($page - 1) * $this::$PPP, $this::$PPP);
+    //Add like info
+    $posts = $posts->map(function ($pst) use ($status) {
+      return $pst->toArray() + array(
+        'likes' => $pst->likeUsers()->count(),
+        'isLiked' => $pst->likeUsers()->where('user_id', $status['uid'])->count() > 0,
+      );
+    });
     $status->put('posts', $posts);
-
-    //Get like data per page
-
 
     // Get users data per page
     $users = User::whereIn('id', $posts->pluck('user_id')->unique())->get();

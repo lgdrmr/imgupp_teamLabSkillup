@@ -57,4 +57,23 @@ class PostController extends Controller
     Post::destroy($iid);
     return redirect('/home');
   }
+
+  /**
+   * Like the post
+   */
+  public function like(Request $request)
+  {
+    $status = LoginController::is_user_loggedin($request);
+    $iid = $request->get('image_id');
+    Post::where('id', $iid)->get()->first()->likeUsers()->attach($status['uid']);
+    return redirect('/home');
+  }
+
+  public function unlike(Request $request)
+  {
+    $status = LoginController::is_user_loggedin($request);
+    $iid = $request->get('image_id');
+    Post::where('id', $iid)->get()->first()->likeUsers()->detach($status['uid']);
+    return redirect('/home');
+  }
 }
