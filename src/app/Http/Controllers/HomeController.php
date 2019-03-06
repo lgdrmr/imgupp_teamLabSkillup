@@ -19,14 +19,14 @@ class HomeController extends Controller
   {
     $status = LoginController::is_user_loggedin($request);
 
-    $page = $this::pageSet($request);
+    $page = self::pageSet($request);
     if ($page == 1)
       $status->put('isHead', true);
-    if (!( Post::all()->count() > $page * $this::$PPP ))
+    if (!( Post::all()->count() > $page * self::$PPP ))
       $status->put('isTail', true);
 
     // Get posts data per page
-    $posts = Post::latest('created_at')->get()->slice(($page - 1) * $this::$PPP, $this::$PPP);
+    $posts = Post::latest('created_at')->get()->slice(($page - 1) * self::$PPP, self::$PPP);
     //Add like info
     $posts = $posts->map(function ($pst) use ($status) {
       return $pst->toArray() + array(
