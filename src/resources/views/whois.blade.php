@@ -2,12 +2,19 @@
 @section('title', 'Liked users - Imgupp')
 @section('content')
 @include('layouts.header', ['is_loggedin' => $is_loggedin])
+  <div class="content">
 @isset ($likedUsers)
 @foreach ($likedUsers as $usr)
-  <a href="/{{ $usr['github_id'] }}">{{ $usr['github_id'] }}</a>
-  <div>
-    <a href="/{{ $usr['github_id'] }}"><img src="{{ $usr['avaterfile'] }}" height="200" width="200"></a>
-  </div>
+    <div class="whoisprofile">
+      <div class="useravaterarea">
+        <img class="whoisimg" src="{{ $usr['avaterfile'] }}">
+      </div>
+      <div class="usertextarea">
+        <span class="whoisname">{{ $usr['github_id'] }}</span>
+      </div>
+      <a href="/{{ $usr['github_id'] }}"></a>
+    </div>
 @endforeach
 @endisset
+  </div>
 @endsection
