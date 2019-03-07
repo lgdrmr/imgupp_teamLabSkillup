@@ -13,9 +13,7 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/login');
 
 Route::get('/login', 'Auth\LoginController@top');
 Route::get('/login/github', 'Auth\LoginController@redirectToProvider');
