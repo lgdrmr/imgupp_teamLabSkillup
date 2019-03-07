@@ -1,24 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Post</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
+@extends('layouts.base')
+@section('title', 'Post')
+@section('script')
   <script src="js/imgpreview.js"></script>
-</head>
-<body>
-  <div class=header>
-    <a href="/home">home</a>
-@if ($is_loggedin)
-    <a href="/logout">logout</a>
-@else
-    <a href="/login">login</a>
-@endif
-    <a href="/post">post</a>
-  </div>
-
+@endsection
+@section('content')
+@include('layouts.header', ['is_loggedin' => $is_loggedin])
   <!-- エラーメッセージ -->
 @if ($errors->any())
   <ul>
@@ -27,7 +13,6 @@
 @endforeach
   </ul>
 @endif
-
   <!-- フォーム -->
   <form name="upload" method="POST" action="{{ url('/upload') }}" enctype="multipart/form-data">
     <label for="file_upload">
@@ -41,5 +26,4 @@
     {{ csrf_field() }}
     <a href="javascript:upload.submit()">Upload</a>
   </form>
-</body>
-</html>
+@endsection
