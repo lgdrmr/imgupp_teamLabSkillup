@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', 'Liked users')
+@section('title', 'Liked users - Imgupp')
 @section('content')
 @include('layouts.header', ['is_loggedin' => $is_loggedin])
 @isset ($likedUsers)
