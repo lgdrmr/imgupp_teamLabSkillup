@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', 'Home')
+@section('title', 'Home - Imgupp')
 @section('content')
 @include('layouts.header', ['is_loggedin' => $is_loggedin])
   <div class="content">

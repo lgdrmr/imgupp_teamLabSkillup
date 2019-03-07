@@ -2,13 +2,26 @@
 @section('title', 'Profile - Imgupp')
 @section('content')
 @include('layouts.header', ['is_loggedin' => $is_loggedin])
-  <h4>User name: {{ $name }}</h4>
-  <div><img src="{{ $avater }}" height="200" width="200"></div>
-  <h4>Like: {{ $thisuserlikes }}</h4>
-
+  <div class="content">
+    <section class="userprofile">
+      <div class="useravaterarea">
+        <img class="avaterimg" src="{{ $avater }}">
+      </div>
+      <div class="usertextarea">
+        <div class="username">{{ $name }}</div>
+        <div class="userlikes">Likes: {{ $thisuserlikes }}</div>
+      </div>
+    </section>
 @isset ($thisuserposts)
+    <section class="imglist">
 @foreach ($thisuserposts as $pst)
-  <img src="{{ asset('storage/'.$pst->imagefile) }}">
+      <div class="imgitem">
+        <div class="innerbox">
+        <img class="userimg" src="{{ asset('storage/'.$pst->imagefile) }}">
+        </div>
+      </div>
 @endforeach
+    </section>
 @endisset
+  </div>
 @endsection
