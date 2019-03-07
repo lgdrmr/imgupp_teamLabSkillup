@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['imagefile', 'user_id', 'caption'];
+    protected $fillable = ['imagefile', 'filetype', 'user_id', 'caption'];
 
     /**
      * Get users who liked the post

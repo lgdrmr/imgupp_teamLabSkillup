@@ -32,10 +32,12 @@ class PostController extends Controller
     ]);
 
     if ($request->hasFile('image')) {
-      $path = $request->file('image')->store('public');
+      $image = base64_encode(file_get_contents($request->file('image')->getRealPath()));
+      $filetype = $request->file('image')->getClientOriginalExtension();
       $uid = $request->session()->pull('uid');
       Post::create([
-        'imagefile' => basename($path),
+        'imagefile' => $image,
+        'filetype' => $filetype,
         'user_id' => $uid,
         'caption' => $request->get('caption'),
       ]);

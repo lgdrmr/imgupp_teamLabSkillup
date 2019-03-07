@@ -17,7 +17,7 @@
         </form>
 @endif
       </div>
-      <img class="post-img" src="{{ asset('storage/'.$pst['imagefile']) }}">
+      <img class="post-img" src="data:image/{{ $pst['filetype'] }};base64,{{ $pst['imagefile'] }}">
       <div class="post-footer">
         <div class="post-caption">
           {{ htmlspecialchars($pst['caption']) }}
