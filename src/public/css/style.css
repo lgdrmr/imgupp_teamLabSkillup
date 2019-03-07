@@ -27,7 +27,6 @@ a.fix:hover {
   min-height: 100vh;
   flex-direction: column;
   margin: 0 auto;
-  background: #eee;
 }
 
 .content {
@@ -35,6 +34,7 @@ a.fix:hover {
   flex: 1;
   flex-direction: column;
   margin-top: 50px;
+  background: #eee;
 }
 
 
@@ -201,11 +201,20 @@ a.fix:hover {
   height: 70px;
   border-radius: 50%;
   font-size: 30px;
+  position: relative;
+  background: white;
+  box-shadow: 0 2px 5px #ccc;
+}
+
+.previous-button a, .next-button a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
-  box-shadow: 0 2px 5px #ccc;
 }
 
 .previous-button:active, .next-button:active {
@@ -216,6 +225,68 @@ a.fix:hover {
 .navigation-button {
   color: #424242;
   transform: translateY(-2px);
+}
+
+
+
+/* login */
+
+.logincontent {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logotext {
+  font-family: 'Rock Salt', cursive;
+  font-size: calc(250% + 3vw);
+}
+
+.loginlink {
+  position: relative;
+  display: flex;
+  margin-bottom: 1.5em;
+  background: #333;
+  border-radius: 2px;
+}
+
+.loginlink a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#gittext {
+  flex: 1;
+  color: #f5f5f5;
+}
+
+#git-img {
+  width: 20px;
+  height: 20px;
+}
+
+#gitlogo {
+  padding: 0.6em 0 0 0.8em;
+}
+
+#gittext {
+  padding: 0.5em 0.75em;
+}
+
+#github {
+  font-weight: bold;
+  color: #f5f5f5;
 }
 
 label > input {

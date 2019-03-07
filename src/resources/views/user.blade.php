@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', 'Profile: {{ $name }}')
+@section('title', 'Profile: {{ $name }} - Imgupp')
 @section('content')
 @include('layouts.header', ['is_loggedin' => $is_loggedin])
   <h4>User name: {{ $name }}</h4>

@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', 'Post')
+@section('title', 'Post - Imgupp')
 @section('script')
   <script src="js/imgpreview.js"></script>
 @endsection
