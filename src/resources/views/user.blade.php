@@ -1,32 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Profile: {{ $name }}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <div class=header>
-    <a href="/home">home</a>
-@if ($is_loggedin)
-    <a href="/logout">logout</a>
-@else
-    <a href="/login">login</a>
-@endif
-    <a href="/post">post</a>
-  </div>
-
-  <h4>User name: {{ $name }}</h4>
-  <div><img src="{{ $avater }}" height="200" width="200"></div>
-  <h4>Like: {{ $thisuserlikes }}</h4>
-
+@extends('layouts.base')
+@section('title', 'Profile - Imgupp')
+@section('content')
+@include('layouts.header', ['is_loggedin' => $is_loggedin])
+  <div class="content">
+    <section class="userprofile">
+      <div class="useravaterarea">
+        <img class="avaterimg" src="{{ $avater }}">
+      </div>
+      <div class="usertextarea">
+        <div class="username">{{ $name }}</div>
+        <div class="userlikes">Likes: {{ $thisuserlikes }}</div>
+      </div>
+    </section>
 @isset ($thisuserposts)
+    <section class="imglist">
 @foreach ($thisuserposts as $pst)
-  <img src="{{ asset('storage/'.$pst->imagefile) }}">
+      <div class="imgitem">
+        <div class="innerbox">
+        <img class="userimg" src="{{ asset('storage/'.$pst->imagefile) }}">
+        </div>
+      </div>
 @endforeach
+    </section>
 @endisset
-
-</body>
-</html>
+  </div>
+@endsection

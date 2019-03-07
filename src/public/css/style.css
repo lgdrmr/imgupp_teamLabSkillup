@@ -1,4 +1,600 @@
-img {
-  max-width: 300px;
+/* base */
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html{
+  color: #424242;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a.fix, a.fix:visited {
+  color: #424242;
+}
+
+a.fix:hover {
+  color: #6d6d6d;
+  transition: 300ms;
+}
+
+.HolyGrail {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-top: 50px;
+  background: #eee;
+}
+
+
+/* header */
+
+.siteHeader {
+  display: flex;
+  width: 100%;
+  position: fixed;
+  background-color: white;
+  box-shadow: 0 2px 5px #ccc;
+  z-index: 100;
+}
+
+.siteHeader-buttonarea{
+  display: flex;
+  width: 55%;
+  min-width: 450px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.siteHeader-section {
+  display: flex;
+  align-items: center;
+}
+
+.siteHeader-home {
+  font-family: 'Rock Salt', cursive;
+  font-size: 20px;
+}
+
+.siteHeader-button {
+  padding: 5px, 15px;
+  font-size: 12px;
+}
+
+.siteHeader-button + .siteHeader-button {
+  margin-left: 20px;
+}
+
+
+/* home - post */
+
+.post {
+  max-width: 500px;
+  width: 90vw;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
+  margin: 10px auto;
+}
+
+.post-header {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.trash {
+  font-size: 16px;
+  color: #424242;
+}
+
+.trash:hover {
+  font-size: 16px;
+  color: #d60000;
+  transition: 300ms;
+}
+
+.trash:active {
+  font-size: 16px;
+  color: #9c0000;
+}
+
+.post-img {
+  border-radius: 5px, 5px, 0, 0;
+  max-width: 100%;
   height: auto;
+}
+
+.post-footer {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-like {
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.likebutton-area {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.likecounter-area {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #eee;
+}
+
+.like-button-available {
+  color: #e91e63;
+}
+
+.like-button-available:hover {
+  color: #ff6090;
+  transition: 300ms;
+}
+
+.like-button-available:active {
+  color: #b0003a;
+}
+
+.like-button-notavailable {
+  color: #9e9e9e;
+}
+
+.like-button-notavailable:hover {
+  color: #cfcfcf;
+  transition: 300ms;
+}
+
+.like-count {
+  color: #e91e63;
+}
+
+.like-count:hover {
+  color: #ff6090;
+  transition: 300ms;
+}
+
+.like-count:active {
+  color: #b0003a;
+}
+
+
+/* home - navigation */
+
+.navigation {
+  display: flex;
+  width: 50%;
+  min-width: 400px;
+  margin: 50px auto;
+  justify-content: space-evenly;
+}
+
+.previous-button, .next-button {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  font-size: 30px;
+  position: relative;
+  background: white;
+  box-shadow: 0 2px 5px #ccc;
+}
+
+.previous-button a, .next-button a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.previous-button:active, .next-button:active {
+  box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
+  transform: translateY(2px);
+}
+
+.navigation-button {
+  color: #424242;
+  transform: translateY(-2px);
+}
+
+
+
+/* login */
+
+.logincontent {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logotext {
+  font-family: 'Rock Salt', cursive;
+  font-size: calc(250% + 3vw);
+}
+
+.loginlink {
+  position: relative;
+  display: flex;
+  margin-bottom: 1.5em;
+  background: #333;
+  border-radius: 2px;
+}
+
+.loginlink a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#gittext {
+  flex: 1;
+  color: #f5f5f5;
+}
+
+#git-img {
+  width: 20px;
+  height: 20px;
+}
+
+#gitlogo {
+  padding: 0.6em 0 0 0.8em;
+}
+
+#gittext {
+  padding: 0.5em 0.75em;
+}
+
+#github {
+  font-weight: bold;
+  color: #f5f5f5;
+}
+
+
+/* user */
+
+.userprofile {
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
+  margin: -5px auto 10px auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+}
+
+.useravaterarea {
+  height: 150px;
+}
+
+.avaterimg {
+  height: 100%;
+  border-radius: 0 0 0 5px;
+}
+
+.usertextarea {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  margin: auto;
+}
+
+.username {
+  font-size: 25px;
+  margin: 0 10px;
+}
+
+.userlikes {
+  /* font-size: 20px; */
+  margin: 0 10px;
+}
+
+.imglist {
+  max-width: 500px;
+  width: 90vw;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 3px auto;
+}
+
+.imgitem {
+  max-width: 33.3333%;
+  flex: 0 0 33.3333%;
+  height: auto;
+  position: relative;
+  padding-bottom: 33.3333%;
+}
+
+.innerbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 3%;
+}
+
+.userimg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: white;
+  box-shadow: 0 2px 5px #ccc;
+  border-radius: 3px;
+}
+
+
+/* Whois */
+
+.whoisprofile {
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
+  margin: 10px auto;
+  display: flex;
+  flex-wrap: wrap;
+  height: 150px;
+  width: 400px;
+  position: relative;
+}
+
+.whoisimg {
+  height: 100%;
+  border-radius: 5px 0 0 5px;
+}
+
+.whoisname {
+  font-size: 25px;
+}
+
+.whoisprofile a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.whoisprofile:hover {
+  color: #6d6d6d;
+  transition: 300ms;
+}
+
+
+/* upload */
+
+.inputarea {
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
+  margin: 10px auto;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+}
+
+#fileselect {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+#fileselect:hover {
+  color: #6d6d6d;
+  transition: 300ms;
+}
+
+#selecttext {
+  margin: auto;
+}
+
+#preview {
+  width: 100%;
+  min-height: 200px;
+  background: #efefef;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+#emptyimage {
+  margin: auto;
+  font-size: 50px;
+  color: #bdbdbd;
+}
+
+#previewImage {
+  width: 100%;
+}
+
+#captioninput {
+  width: 100%;
+  min-height: 100px;
+  max-height: 200px;
+  border-radius: 0 0 5px 5px;
+}
+
+label > input {
+  display:none;
+}
+
+label {
+	cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  resize: vertical;
+  outline: none;
+  padding: 10px;
+}
+
+.uploadarea {
+  display: flex;
+  width: 100px;
+  margin: 50px auto;
+  justify-content: center;
+}
+
+.uploadbutton {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  font-size: 30px;
+  position: relative;
+  background: white;
+  box-shadow: 0 2px 5px #ccc;
+}
+
+.uploadbutton a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uploadbutton:active {
+  box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
+  transform: translateY(2px);
+}
+
+.uploadlink {
+  color: #424242;
+  transform: translateY(-2px);
+}
+
+
+/* tooltip */
+
+.cp_tooltip {
+	display: inline-block;
+}
+.cp_tooltiptext {
+	position: relative;
+}
+.cp_tooltiptext::after {
+	position: absolute;
+	transition: all 0.5s ease 0s;
+	opacity: 0;
+  top: 35px;
+  margin: 0 auto;
+	display: block;
+	padding: 0.2em 0.5em;
+	content: attr(data-tooltip);
+	white-space: nowrap;
+	color: #ffffff;
+	border-radius: 2px;
+  background: #424242;
+  font-size: 12px;
+}
+.cp_tooltiptext:hover::after {
+	top: 80px;
+	opacity: 1;
+}
+
+.like-button-available.cp_tooltiptext, .like-count.cp_tooltiptext {
+  position: relative;
+}
+.like-button-available.cp_tooltiptext::after, .like-count.cp_tooltiptext::after  {
+	position: absolute;
+	transition: all 0.5s ease 0s;
+	opacity: 0;
+  top: 10px;
+  left: -15px;
+  margin: 0 auto;
+	display: block;
+	padding: 0.2em 0.5em;
+	content: attr(data-tooltip);
+	white-space: nowrap;
+	color: #ffffff;
+	border-radius: 2px;
+  background: #e91e63;
+  font-size: 12px;
+}
+.like-button-available.cp_tooltiptext:hover::after, .like-count.cp_tooltiptext:hover::after {
+	top: 30px;
+	opacity: 1;
+}
+
+.trash.cp_tooltiptext {
+  position: relative;
+}
+.trash.cp_tooltiptext::after {
+	position: absolute;
+	transition: all 0.5s ease 0s;
+	opacity: 0;
+  top: 10px;
+  left: -15px;
+  margin: 0 auto;
+	display: block;
+	padding: 0.2em 0.5em;
+	content: attr(data-tooltip);
+	white-space: nowrap;
+	color: #ffffff;
+	border-radius: 2px;
+  background: #d60000;
+  font-size: 12px;
+}
+.trash.cp_tooltiptext:hover::after {
+	top: 30px;
+	opacity: 1;
 }
