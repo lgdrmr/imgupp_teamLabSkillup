@@ -16,18 +16,25 @@ if ($errors->any()) {
 @section('content')
 @include('layouts.header', ['is_loggedin' => $is_loggedin])
   <div class="content">
-    <!-- フォーム -->
-    <form name="upload" method="POST" action="{{ url('/upload') }}" enctype="multipart/form-data">
-      <label for="file_upload">
-      ファイルを選択して下さい
-      <input type="file" id="file_upload" name="image" onChange="imgPreview(event)">
-      </label>
-      <div id="preview">
-      </div>
-      <textarea name="caption" rows="3" cols="70" placeholder="Enter caption"></textarea>
-      <br>
+    <form id="uploadform" name="upload" method="POST" action="{{ url('/upload') }}" enctype="multipart/form-data">
+      <section class="inputarea">
+        <div id="fileselect">
+          <label for="file_upload">
+            <input type="file" id="file_upload" name="image" onChange="imgPreview(event)">
+          </label>
+          <span id="selecttext"><span class="typcn typcn-folder-open"></span> Select image file</span>
+        </div>
+        <div id="preview">
+          <span id="emptyimage" class="typcn typcn-image"></span>
+        </div>
+        <textarea id="captioninput" name="caption" rows="3" cols="70" placeholder="Enter caption"></textarea>
+      </section>
       {{ csrf_field() }}
-      <a href="javascript:upload.submit()">Upload</a>
+      <section class="uploadarea">
+        <div class="uploadbutton">
+          <a class="uploadlink cp_tooltiptext" data-tooltip="Post!" href="javascript:upload.submit()"><span class="typcn typcn-cloud-storage"></span></a>
+        </div>
+      </section>
     </form>
   </div>
 @endsection

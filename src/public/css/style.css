@@ -46,6 +46,7 @@ a.fix:hover {
   position: fixed;
   background-color: white;
   box-shadow: 0 2px 5px #ccc;
+  z-index: 100;
 }
 
 .siteHeader-buttonarea{
@@ -108,7 +109,7 @@ a.fix:hover {
 .trash:hover {
   font-size: 16px;
   color: #d60000;
-  transition: 600ms;
+  transition: 300ms;
 }
 
 .trash:active {
@@ -403,13 +404,197 @@ a.fix:hover {
 }
 
 
+/* upload */
+
+.inputarea {
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
+  margin: 10px auto;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+}
+
+#fileselect {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+#fileselect:hover {
+  color: #6d6d6d;
+  transition: 300ms;
+}
+
+#selecttext {
+  margin: auto;
+}
+
+#preview {
+  width: 100%;
+  min-height: 200px;
+  background: #efefef;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+#emptyimage {
+  margin: auto;
+  font-size: 50px;
+  color: #bdbdbd;
+}
+
+#previewImage {
+  width: 100%;
+}
+
+#captioninput {
+  width: 100%;
+  min-height: 100px;
+  max-height: 200px;
+  border-radius: 0 0 5px 5px;
+}
+
 label > input {
-  display:none;	/* アップロードボタンのスタイルを無効にする */
+  display:none;
 }
 
 label {
-  color: #AAAAAA;	/* ラベルテキストの色を指定する */
-  background-color: #006DD9;/* ラベルの背景色を指定する */
-  padding: 10px;	/* ラベルとテキスト間の余白を指定する */
-  border: double 4px #AAAAAA;/* ラベルのボーダーを指定する */
+	cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  resize: vertical;
+  outline: none;
+  padding: 10px;
+}
+
+.uploadarea {
+  display: flex;
+  width: 100px;
+  margin: 50px auto;
+  justify-content: center;
+}
+
+.uploadbutton {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  font-size: 30px;
+  position: relative;
+  background: white;
+  box-shadow: 0 2px 5px #ccc;
+}
+
+.uploadbutton a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uploadbutton:active {
+  box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
+  transform: translateY(2px);
+}
+
+.uploadlink {
+  color: #424242;
+  transform: translateY(-2px);
+}
+
+
+/* tooltip */
+
+.cp_tooltip {
+	display: inline-block;
+}
+.cp_tooltiptext {
+	position: relative;
+}
+.cp_tooltiptext::after {
+	position: absolute;
+	transition: all 0.5s ease 0s;
+	opacity: 0;
+  top: 35px;
+  margin: 0 auto;
+	display: block;
+	padding: 0.2em 0.5em;
+	content: attr(data-tooltip);
+	white-space: nowrap;
+	color: #ffffff;
+	border-radius: 2px;
+  background: #424242;
+  font-size: 12px;
+}
+.cp_tooltiptext:hover::after {
+	top: 80px;
+	opacity: 1;
+}
+
+.like-button-available.cp_tooltiptext, .like-count.cp_tooltiptext {
+  position: relative;
+}
+.like-button-available.cp_tooltiptext::after, .like-count.cp_tooltiptext::after  {
+	position: absolute;
+	transition: all 0.5s ease 0s;
+	opacity: 0;
+  top: 10px;
+  left: -15px;
+  margin: 0 auto;
+	display: block;
+	padding: 0.2em 0.5em;
+	content: attr(data-tooltip);
+	white-space: nowrap;
+	color: #ffffff;
+	border-radius: 2px;
+  background: #e91e63;
+  font-size: 12px;
+}
+.like-button-available.cp_tooltiptext:hover::after, .like-count.cp_tooltiptext:hover::after {
+	top: 30px;
+	opacity: 1;
+}
+
+.trash.cp_tooltiptext {
+  position: relative;
+}
+.trash.cp_tooltiptext::after {
+	position: absolute;
+	transition: all 0.5s ease 0s;
+	opacity: 0;
+  top: 10px;
+  left: -15px;
+  margin: 0 auto;
+	display: block;
+	padding: 0.2em 0.5em;
+	content: attr(data-tooltip);
+	white-space: nowrap;
+	color: #ffffff;
+	border-radius: 2px;
+  background: #d60000;
+  font-size: 12px;
+}
+.trash.cp_tooltiptext:hover::after {
+	top: 30px;
+	opacity: 1;
 }

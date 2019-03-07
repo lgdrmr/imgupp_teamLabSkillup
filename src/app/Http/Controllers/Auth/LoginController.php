@@ -90,7 +90,8 @@ class LoginController extends Controller
             try {
                 $user = Socialite::driver('github')->userFromToken($token);
             } catch (\Exception $e) {
-                self::logout($request);
+                $request->session()->forget('github_token');
+                return redirect('/login');
             }
             $uid = User::where('github_id', $user->getNickname())->value('id');
         } else {

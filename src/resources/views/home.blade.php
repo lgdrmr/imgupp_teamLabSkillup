@@ -13,7 +13,7 @@
         <form name="delete{{ $pst['id'] }}" method="POST" action="{{ url('/delete') }}">
           <input type="hidden" name="image_id" value="{{ $pst['id'] }}">
           {{ csrf_field() }}
-          <a class="trash" href="javascript:delete{{ $pst['id'] }}.submit()"><span class="typcn typcn-trash"></span></a>
+          <a class="trash cp_tooltiptext" data-tooltip="Delete" href="javascript:delete{{ $pst['id'] }}.submit()"><span class="typcn typcn-trash"></span></a>
         </form>
 @endif
       </div>
@@ -30,14 +30,14 @@
             <form name="unlike{{ $pst['id'] }}" method="POST" action="{{ url('/unlike') }}">
               <input type="hidden" name="image_id" value="{{ $pst['id'] }}">
               {{ csrf_field() }}
-              <a class="like-button-available" href="javascript:unlike{{ $pst['id'] }}.submit()"><span class="typcn typcn-heart-full-outline"></span></a>
+              <a class="like-button-available cp_tooltiptext" data-tooltip="Unlike." href="javascript:unlike{{ $pst['id'] }}.submit()"><span class="typcn typcn-heart-full-outline"></span></a>
             </form>
 @else
             <!-- likeしていない -->
             <form name="like{{ $pst['id'] }}" method="POST" action="{{ url('/like') }}">
               <input type="hidden" name="image_id" value="{{ $pst['id'] }}">
               {{ csrf_field() }}
-              <a class="like-button-available" href="javascript:like{{ $pst['id'] }}.submit()"><span class="typcn typcn-heart-outline"></span></a>
+              <a class="like-button-available cp_tooltiptext" data-tooltip="Like!" href="javascript:like{{ $pst['id'] }}.submit()"><span class="typcn typcn-heart-outline"></span></a>
             </form>
 @endif
 @else
@@ -51,7 +51,7 @@
             <form action="{{ url('/whois') }}" method="POST" name="whois{{ $pst['id'] }}">
               <input type="hidden" name="image_id" value="{{ $pst['id'] }}">
               {{ csrf_field() }}
-              <a class="like-count" href="javascript:whois{{ $pst['id'] }}.submit()">{{ $pst['likes'] }}</a>
+              <a class="like-count cp_tooltiptext" data-tooltip="Likes" href="javascript:whois{{ $pst['id'] }}.submit()">{{ $pst['likes'] }}</a>
             </form>
           </div>
         </div>
@@ -61,12 +61,12 @@
     <section class="navigation">
 @empty ($isHead)
       <div class="previous-button">
-        <a class="navigation-button" href="/previous"><span class="typcn typcn-arrow-left-thick"></span></a>
+        <a class="navigation-button cp_tooltiptext" data-tooltip="Previous" href="/previous"><span class="typcn typcn-arrow-left-thick"></span></a>
       </div>
 @endempty
 @empty ($isTail)
       <div class="next-button">
-        <a class="navigation-button" href="/next"><span class="typcn typcn-arrow-right-thick"></span></a>
+        <a class="navigation-button cp_tooltiptext" data-tooltip="Next" href="/next"><span class="typcn typcn-arrow-right-thick"></span></a>
       </div>
 @endempty
     </section>
