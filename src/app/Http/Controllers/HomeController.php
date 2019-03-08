@@ -49,11 +49,11 @@ class HomeController extends Controller
   public static function pageSet(Request $request)
   {
     $page = 1;
-    if (url()->previous() != url('/home'))
+    if (url()->previous() == url('/home'))
     {
-      $request->session()->put('page', $page);
-    } else {
       $page = $request->session()->get('page');
+    } else {
+      $request->session()->put('page', $page);
     }
     return $page;
   }
