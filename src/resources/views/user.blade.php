@@ -17,7 +17,7 @@
 @foreach ($thisuserposts as $pst)
       <div class="imgitem">
         <div class="innerbox">
-        <img class="userimg" src="{{ asset('storage/'.$pst->imagefile) }}">
+        <img class="userimg" src="data:image/{{ $pst['filetype'] }};base64,{{ $pst['imagefile'] }}">
         </div>
       </div>
 @endforeach
