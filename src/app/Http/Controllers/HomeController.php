@@ -13,7 +13,7 @@ class HomeController extends Controller
   /**
    * The number of posts per page
    */
-  public static $PPP = 3;
+  public static $PPP = 10;
 
   public function top(Request $request)
   {

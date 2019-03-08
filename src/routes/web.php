@@ -12,6 +12,7 @@
 */
 
 Route::redirect('/', '/login');
+Route::redirect('/user', '/home');
 
 Route::get('/login', 'Auth\LoginController@top');
 Route::get('/login/github', 'Auth\LoginController@redirectToProvider');
