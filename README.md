@@ -6,7 +6,7 @@ http://imgupp.herokuapp.com/home
 
 ## Description
 
-
+テーブルはユーザと画像についてのものが主で，Likeは中間テーブルを用いて表現しました．
 
 ## Advantage point
 
