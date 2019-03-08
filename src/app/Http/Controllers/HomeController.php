@@ -40,6 +40,8 @@ class HomeController extends Controller
     $users = User::whereIn('id', $posts->pluck('user_id')->unique())->get();
     $status->put('users', $users);
 
+    $status->put('page', $page);
+
     return view('/home', $status->all());
   }
 
@@ -48,13 +50,11 @@ class HomeController extends Controller
    */
   public static function pageSet(Request $request)
   {
-    $page = 1;
-    if (url()->previous() == url('/home'))
-    {
-      $page = $request->session()->get('page');
-    } else {
-      $request->session()->put('page', $page);
+    $page = $request->session()->get('page');
+    if ($page == null || url()->previous() != url('/home')) {
+      $page = 1;
     }
+    $request->session()->put('page', $page);
     return $page;
   }
 
